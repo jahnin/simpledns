@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>SimpleDNS</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/static/assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+		<header id="header">
+			<h1>SimpleDNS</h1>
+			<p>A simple DNS Server for your homelab.<br />
+			Powered by <a href="https://coredns.io/">CoreDNS</a>.</p>
+		</header>
+
+		<!-- Main Content -->
+		<main id="main">
+			<!-- Add Record Form -->
+			<form id="add-form" method="post" action="#">
+				<input type="text" name="fqdn" required placeholder="FQDN - server.lab.local">
+				<input type="text" name="ip" required placeholder="IP Address - x.x.x.x">
+				<input type="submit" value="Add Record" />
+			</form>
+			<p id="msg"></p>
+
+			<!-- DNS Records Container -->
+			<div id="records-container"></div>
+			
+			<!-- CSV Export Button -->
+			<div id="export-container" style="display: none;">
+				<button class="export-csv" onclick="exportToCSV()">Export to CSV</button>
+			</div>
+		</main>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<ul class="icons">
+				<li><a href="https://x.com/jahnin" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+				<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+				<li><a href="" class="icon fa-envelope"><span class="label">Email</span></a></li>
+			</ul>
+			<ul class="copyright">
+				<li> SimpleDNS is a free and open source software distributed under the permissive MIT License. 
+				</li><li>Developed by Jahnin Rajamoni.</li>
+			</ul>
+		</footer>
+
+		<script>
+			
+		</script>
+
+		<!-- Scripts -->
+		<script src="/static/assets/js/main.js"></script>
+
+	</body>
+</html>
