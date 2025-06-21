@@ -26,4 +26,8 @@ coredns -conf "$COREFILE" &
 export COREDNS_PID=$!
 echo "CoreDNS started (pid $COREDNS_PID)"
 
-python /app/app.py
+# Environment‑driven defaults:
+: "${GUNICORN_WORKERS:=4}"        # default 4 workers
+: "${GUNICORN_BIND:=0.0.0.0:8000}"# default bind address
+
+exec gunicorn -w "$GUNICORN_WORKERS" -b "$GUNICORN_BIND" app:app
