@@ -1,15 +1,29 @@
 #!/bin/sh
 set -e
 
-# If Corefile volume is empty on first run, seed it with template
-if [ ! -f /etc/coredns/Corefile ]; then
-  cp /app/Corefile.template /etc/coredns/Corefile
+COREFILE=/etc/coredns/Corefile
+TEMPLATE=/app/Corefile.template
+
+# If the Corefile doesn’t exist yet, copy the template in place
+if [ ! -f "$COREFILE" ]; then
+  cp "$TEMPLATE" "$COREFILE"
 fi
 
-# Start CoreDNS in the background and capture PID for hot‑reloads
-coredns -conf /etc/coredns/Corefile &
+# If DNS_FORWARDERS is set, replace commas with spaces and patch the Corefile
+if [ -n "$DNS_FORWARDERS" ]; then
+  # Convert "1.1.1.1,2.2.2.2"  ->  "1.1.1.1 2.2.2.2"
+  FORWARD_LIST=$(echo "$DNS_FORWARDERS" | tr ',' ' ')
+
+  # Rewrite only the IP list after "forward ."
+  # Keeps any leading whitespace and trailing comment intact
+  sed -i -E \
+    "s#^(\\s*forward \\.)[^#]*#\\1 ${FORWARD_LIST} #" \
+    "$COREFILE"
+fi
+
+# Start CoreDNS in the background (PID captured for hot reloads)
+coredns -conf "$COREFILE" &
 export COREDNS_PID=$!
 echo "CoreDNS started (pid $COREDNS_PID)"
 
-# Launch Flask app (consider gunicorn for prod)
 python /app/app.py
