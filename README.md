@@ -3,7 +3,8 @@ A simple DNS server for your homelab based on CoreDNS with forward and reverse l
 This setup allows you to quickly run a customizable DNS resolver with optional zone data, forwarding capabilities, and a web interface.
 
 ## Prerequisites
-- Docker
+- Docker. For more information see, [Docker Get Started]{https://www.docker.com/get-started/}
+
 
 ## Getting Started
 ### Run docker container using a single command
