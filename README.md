@@ -52,3 +52,22 @@ docker build --no-cache -t simpledns .
 ### Landing Page
 ![](./screenshots/landing-page.png)
 
+### Add DNS record
+![](./screenshots/add-1.png)
+
+![](./screenshots/add-2.png)
+
+### With domain name support
+![](./screenshots/add-multi-domain.png)
+
+### Delete a DNS record
+![](./screenshots/delete.png)
+
+### Export DNS records as csv
+![](./screenshots/export.png)
+
+![](./screenshots/csv.png)
+
+
+
+
