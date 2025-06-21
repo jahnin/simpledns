@@ -6,7 +6,7 @@ services:
       DNS_FORWARDERS: "8.8.8.8,1.1.1.1"  # comma seperated list of upstream DNS servers (edit as needed)
     volumes:
       - ./data:/data                       # DNS Records in json format
-      - ./config/Corefile:/etc/coredns/Corefile   # CoreDNS configuration file
+      - ./config/coredns:/etc/coredns      # CoreDNS configuration
     ports:
       - "53:53/udp"                        # DNS over UDP
       - "53:53/tcp"                        # DNS over TCP
