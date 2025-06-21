@@ -49,3 +49,6 @@ docker build --no-cache -t simpledns .
 ```
 
 ## Screenshots
+### Landing Page
+![](../screenshots/landing-page.png)
+
