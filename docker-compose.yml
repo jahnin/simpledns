@@ -1,0 +1,14 @@
+services:
+  simpledns:
+    image: jahnin/simpledns:v1.0
+    container_name: simpledns
+    environment:
+      DNS_FORWARDERS: "8.8.8.8,1.1.1.1"  # comma seperated list of upstream DNS servers (edit as needed)
+    volumes:
+      - ./data:/data                       # DNS Records in json format
+      - ./config/Corefile:/etc/coredns/Corefile   # CoreDNS configuration file
+    ports:
+      - "53:53/udp"                        # DNS over UDP
+      - "53:53/tcp"                        # DNS over TCP
+      - "8000:8000"                        # SimpleDNS WebUI. 
+    restart: unless-stopped
