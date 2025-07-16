@@ -1,7 +1,8 @@
-FROM python:3.12-alpine
+FROM python:alpine
 
 # -- CoreDNS binary -------------------------------------------------------
 ARG COREDNS_VERSION=1.12.2
+RUN apk update
 RUN apk add --no-cache curl bind-tools \
     && curl -L "https://github.com/coredns/coredns/releases/download/v1.12.2/coredns_1.12.2_linux_amd64.tgz" \
        | tar -xz -C /usr/local/bin \

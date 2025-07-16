@@ -96,10 +96,10 @@ body {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  -moz-justify-content: center;
-  -webkit-justify-content: center;
-  -ms-justify-content: center;
-  justify-content: center;
+  -moz-justify-content: flex-start;
+  -webkit-justify-content: flex-start;
+  -ms-justify-content: flex-start;
+  justify-content: flex-start;
   background-color: #000; }
   body.is-preload *, body.is-preload *:before, body.is-preload *:after {
     -moz-animation: none !important;
@@ -547,13 +547,14 @@ button,
 
 /* Header */
 #header {
-  position: static;
+  position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
   background-color: rgba(0, 0, 0, 0.9);
   backdrop-filter: blur(10px);
-  padding: 30em 4em 1em 2em;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+  padding: 4em 4em 1em 2em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
 
 #header h1 {
   font-size: 3.25em;
